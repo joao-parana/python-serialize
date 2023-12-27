@@ -5,8 +5,8 @@ from models import User
 def main():
     user_json = serialize()
     user = deserialize(user_json)
-    print(user_json)
-    print(user)
+    print(user_json)  # noqa T201
+    print(user)  # noqa T201
 
 
 def serialize():

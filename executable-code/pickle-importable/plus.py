@@ -6,4 +6,9 @@ def create_plus(x):
 
 
 plus_one = create_plus(1)
-plus_two = lambda x: x + 2  # noqa
+plus_two = lambda x: x + 2  # noqa E731
+
+for i in range(5):
+    print(f"{i = }")  # noqa T201
+    print(f"{plus_one(i) = }")  # noqa T201
+    print(f"{plus_two(i) = }")  # noqa T201

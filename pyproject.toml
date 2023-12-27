@@ -1,0 +1,64 @@
+# Arquivo `pyproject.toml` básico para um projeto Python que usa Ruff
+#
+
+[build-system]
+requires = ["setuptools", "wheel"]
+
+# Este arquivo indica que o sistema de construção requer `setuptools` e `wheel`.
+# Além disso, configura o Ruff para usar Python 3.10 e seguir as regras abaixo.
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+select = [
+  "A",
+  "ARG",
+  "B",
+  "C",
+  "E",
+  "F",
+  "FBT",
+  "I",
+  "ICN",
+  "ISC",
+  "N",
+  "PLC",
+  "PLE",
+  "PLR",
+  "PLW",
+  "RUF",
+  "S",
+  "T",
+  "TID",
+  "UP",
+  "W",
+  "YTT",
+]
+ignore = [
+  # Allow non-abstract empty methods in abstract base classes
+  "B027",
+  # Allow boolean positional values in function calls, like `dict.get(... True)`
+  "FBT003",
+  # Ignore checks for possible passwords
+  "S105", "S106", "S107",
+  # Ignore complexity
+  "C901", "PLR0911", "PLR0912", "PLR0913", "PLR0915",
+  # Ignore imported but unused - Ruff F401
+  "F401",
+  # Ignore Use of `assert` detected - Ruff S101
+  "S101",
+]
+unfixable = [
+  # Don't touch unused imports
+  "F401",
+]
+
+[tool.ruff.isort]
+known-first-party = ["gamma_apr"]
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.per-file-ignores]
+# Tests can use magic values, assertions, and relative imports
+"tests/**/*" = ["PLR2004", "S101", "TID252"]
